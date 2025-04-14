@@ -1,13 +1,13 @@
-# metodo 1
+# Metodo 1
 # guardo tutte le celle della tabella nxn e poi dico si Q o no
 # la soluzione sarà una collection nxn
 
-# metodo 2
+# Metodo 2
 # considero nella soluzione una qualche collection.
 # una volta per volta aggiungo un elemento, una coordinata sulla scacchiera, cioè una coppia (riga, colonna)
 # l'algoritmo termina quando il vettore raggiunge N elementi, quindi abbiamo inserito tutte le regine
 
-# metodo 3
+# Metodo 3
 # collection dove ogni elemento è solo la colonna e poi itero sull'indice di tale colonna
 
 # la soluzione 2 è quella più "ricorsiva"
