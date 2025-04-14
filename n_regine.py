@@ -1,10 +1,10 @@
 # Metodo 1
-# guardo tutte le celle della tabella nxn e poi dico si Q o no
-# la soluzione sarà una collection nxn
+# guardo tutte le celle della tabella NxN e poi dico si Q o no
+# la soluzione sarà una collection NxN
 
 # Metodo 2
 # considero nella soluzione una qualche collection.
-# una volta per volta aggiungo un elemento, una coordinata sulla scacchiera, cioè una coppia (riga, colonna)
+# volta per volta aggiungo un elemento, una coordinata sulla scacchiera, cioè una coppia (riga, colonna)
 # l'algoritmo termina quando il vettore raggiunge N elementi, quindi abbiamo inserito tutte le regine
 
 # Metodo 3
@@ -17,19 +17,19 @@
 # i vincoli sono che la regina non deve essere mangiata lungo le due diagonali, lungo la stessa riga e lungo la stessa colonna
 # quindi i vincoli sono 4
 
-# ad esempio ho una regina in po (2, 1)
-# primo vincolo: la riga non può essere 2; riga != 2
-# secondo vincolo: la colonna non può essere 1; colonna != 1
+# ad esempio ho una regina in posizione (2, 1)
+# primo vincolo per una nuova regina da inserire: la riga non può essere 2; riga != 2
+# secondo vincolo per una nuova regina da inserire: la colonna non può essere 1; colonna != 1
 # sulla diagonale positiva: la somma degli indici è pari allo stesso numero (2 + 1 = 3)
 # terzo vincolo: riga + colonna != 3
 # sulla diagonale negativa: la differenza tra riga e colonna è costante (2 - 1 = 1)
 # quarto vincolo: riga - colonna != 1
 
 # dove si esegue il controllo?
-# -1- verifico se questa è una soluzione valida all'interno dell' if
-# -2- check sulla regina che vado ad aggiungere nel ciclo for
+# -1- verifico se questa è una soluzione valida all'interno dell' if della condizione terminale
+# -2- check sulla regina che vado ad aggiungere nel ciclo for della ricorsione
 # ne faccio solo uno dei due
-# con il metodo -2- faccio moooooolte meno chiamate ricorsive perchè faccio il controllo prima di richiamare il metodo ricorsivo
+# con il metodo -2- faccio moooooolte meno chiamate ricorsive perché faccio il controllo prima di richiamare il metodo ricorsivo
 # quindi è più efficiente il -2-
 
 from time import time
@@ -65,7 +65,7 @@ class NRegine:
         # 5) Ho passato tutti i controlli. Return True
         return True
 
-    def is_soluzione(self, parziale):
+    def is_soluzione(self, parziale):  # per verificare i vincoli con -1-
         # non posso verificare una regina con se stessa
         for i in range(len(parziale) - 1):
             for j in range(i + 1, len(parziale)):
@@ -74,7 +74,7 @@ class NRegine:
                     return False
         return True
 
-    def is_valid(self, nuova_regina, parziale):
+    def is_valid(self, nuova_regina, parziale):  # per verificare i vincoli con -2-
         for regina in parziale:
             if not self.is_admissible(nuova_regina, regina):  # metodo che verifica una coppia di regine
                 return False
@@ -88,10 +88,9 @@ class NRegine:
             # if self.is_soluzione(parziale):
 
             # potrei verificare se è una soluzione già trovata, magari attraverso un set
-            print(parziale)  # stampo la soluzione, cioè una lista, composta da 4 liste di coppie [riga, colonna]
+            print(parziale)  # stampo la soluzione, cioè una lista, composta da N liste di coppie [riga, colonna]
             self.soluzioni.append(copy.deepcopy(parziale))
             self.n_soluzioni += 1  # ogni volta che raggiungo una soluzione, aumento la variabile associata
-
 
         # caso ricorsivo
         else:
